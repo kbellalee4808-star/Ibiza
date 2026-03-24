@@ -1,725 +1,1039 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Valiant Lady | 지중해 크루즈 2026.5.25</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=Noto+Sans+KR:wght@300;400;500;700&family=Noto+Serif+KR:wght@300;400;600&display=swap" rel="stylesheet">
-<style>
-:root {
-  --ink: #0e0e12;
-  --deep: #12151f;
-  --mid: #1c2235;
-  --azure: #1a4a6e;
-  --sky: #2a7fbd;
-  --gold: #c8a96e;
-  --gold2: #e8d4a0;
-  --sand: #f5efe6;
-  --mist: rgba(245,239,230,0.65);
-  --dim: rgba(245,239,230,0.38);
-}
-*{margin:0;padding:0;box-sizing:border-box;}
-html{scroll-behavior:smooth;}
-body{font-family:'Noto Sans KR',sans-serif;background:var(--ink);color:var(--sand);overflow-x:hidden;}
-
-/* ─── NAV ─── */
-nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:20px 52px;display:flex;justify-content:space-between;align-items:center;transition:background .4s;}
-nav.scrolled{background:rgba(14,14,18,.96);backdrop-filter:blur(12px);}
-.logo{font-family:'Cormorant Garamond',serif;font-size:19px;letter-spacing:3px;color:var(--gold);text-decoration:none;font-weight:400;}
-.nav-menu{display:flex;gap:36px;list-style:none;}
-.nav-menu a{font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--dim);text-decoration:none;transition:color .25s;}
-.nav-menu a:hover{color:var(--gold);}
-.nav-btn{background:transparent;border:1px solid var(--gold);color:var(--gold);padding:9px 22px;font-size:11px;letter-spacing:2px;text-transform:uppercase;cursor:pointer;text-decoration:none;transition:all .3s;}
-.nav-btn:hover{background:var(--gold);color:var(--ink);}
-
-/* ─── HERO ─── */
-.hero{height:100vh;position:relative;display:flex;flex-direction:column;justify-content:flex-end;padding-bottom:10vh;overflow:hidden;}
-.hero-bg{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1505881502353-a1986add3762?w=1800&q=85') center/cover no-repeat;animation:zoomOut 20s ease-in-out infinite alternate;}
-.hero-overlay{position:absolute;inset:0;background:linear-gradient(170deg,rgba(14,14,18,.15) 0%,rgba(14,14,18,.5) 50%,rgba(14,14,18,.95) 100%);}
-@keyframes zoomOut{from{transform:scale(1.06);}to{transform:scale(1.0);}}
-.hero-content{position:relative;max-width:1200px;margin:0 auto;padding:0 52px;width:100%;}
-.hero-tag{display:inline-block;border:1px solid var(--gold);color:var(--gold);font-size:10px;letter-spacing:4px;padding:6px 18px;text-transform:uppercase;margin-bottom:24px;animation:up 1s .1s both;}
-.hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(48px,8vw,110px);font-weight:300;line-height:.95;letter-spacing:-1px;animation:up 1s .25s both;}
-.hero h1 em{font-style:italic;color:var(--gold);}
-.hero-meta{display:flex;gap:48px;margin-top:36px;animation:up 1s .45s both;flex-wrap:wrap;}
-.meta-item{}
-.meta-l{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--dim);margin-bottom:5px;}
-.meta-v{font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--sand);}
-.hero-route{position:relative;margin-top:32px;animation:up 1s .6s both;display:flex;flex-wrap:wrap;gap:6px;align-items:center;}
-.hero-route .city{font-size:13px;color:rgba(245,239,230,.75);letter-spacing:.5px;}
-.hero-route .arr{color:var(--gold);font-size:11px;margin:0 2px;}
-.hero-scroll{position:absolute;bottom:48px;right:52px;display:flex;flex-direction:column;align-items:center;gap:10px;animation:up 1s .9s both;}
-.hero-scroll span{font-size:9px;letter-spacing:3px;color:var(--dim);text-transform:uppercase;writing-mode:vertical-rl;}
-.scroll-bar{width:1px;height:56px;background:linear-gradient(var(--gold),transparent);animation:pulse 2s ease-in-out infinite;}
-@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
-@keyframes up{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
-
-/* ─── SECTIONS ─── */
-section{padding:110px 0;}
-.wrap{max-width:1200px;margin:0 auto;padding:0 52px;}
-.s-label{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:14px;}
-.s-title{font-family:'Cormorant Garamond',serif;font-size:clamp(36px,4.5vw,62px);font-weight:300;line-height:1.1;}
-.s-title em{font-style:italic;color:var(--gold);}
-.rule{width:48px;height:1px;background:var(--gold);margin:22px 0 52px;}
-
-/* ─── ABOUT ─── */
-.about{background:var(--deep);}
-.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;}
-.about-body{font-size:15px;line-height:2;color:var(--mist);margin-top:0;}
-.ship-card{background:rgba(255,255,255,.03);border:1px solid rgba(200,169,110,.18);padding:40px;}
-.ship-img{width:100%;height:220px;object-fit:cover;margin-bottom:28px;filter:brightness(.85);}
-.ship-nm{font-family:'Cormorant Garamond',serif;font-size:30px;color:var(--gold);margin-bottom:4px;}
-.ship-sub{font-size:11px;letter-spacing:2px;color:var(--dim);margin-bottom:28px;text-transform:uppercase;}
-.specs{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
-.spec{border-top:1px solid rgba(200,169,110,.2);padding-top:14px;}
-.spec-l{font-size:10px;letter-spacing:2px;color:var(--dim);text-transform:uppercase;margin-bottom:4px;}
-.spec-v{font-size:17px;font-weight:500;}
-.features{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px;}
-.feat-tag{font-size:11px;border:1px solid rgba(200,169,110,.3);color:var(--gold2);padding:5px 12px;letter-spacing:.5px;}
-
-/* ─── ROUTE MAP ─── */
-.route-sec{background:var(--ink);padding:100px 0 80px;}
-.route-visual{max-width:900px;margin:0 auto;padding:0 52px;margin-top:52px;}
-.route-svg-wrap{background:rgba(26,74,110,.12);border:1px solid rgba(200,169,110,.15);padding:48px;position:relative;}
-
-/* ─── SCHEDULE ─── */
-.sched{background:var(--mid);}
-.days{display:flex;flex-direction:column;gap:0;}
-.day-row{display:grid;grid-template-columns:90px 1fr 160px;border-bottom:1px solid rgba(255,255,255,.06);padding:24px 0;align-items:start;transition:background .2s;cursor:default;}
-.day-row:hover{background:rgba(200,169,110,.04);}
-.day-row:last-child{border-bottom:none;}
-.d-num{font-family:'Cormorant Garamond',serif;font-size:42px;font-weight:300;color:rgba(200,169,110,.3);line-height:1;}
-.d-date{font-size:11px;color:var(--dim);letter-spacing:1px;margin-top:2px;}
-.d-body{}
-.d-loc{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:400;line-height:1.1;margin-bottom:4px;}
-.d-country{font-size:11px;letter-spacing:2px;color:var(--dim);text-transform:uppercase;margin-bottom:10px;}
-.d-desc{font-size:13px;color:var(--mist);line-height:1.7;}
-.d-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;}
-.d-tag{font-size:10px;border:1px solid rgba(200,169,110,.25);color:var(--gold);padding:3px 10px;letter-spacing:.5px;}
-.d-time{text-align:right;}
-.d-time-val{font-family:'Cormorant Garamond',serif;font-size:20px;color:var(--gold2);}
-.d-time-l{font-size:10px;color:var(--dim);letter-spacing:1px;margin-top:2px;}
-.sea-row .d-loc{color:var(--sky);}
-
-/* ─── PORTS GALLERY ─── */
-.gallery-sec{background:var(--deep);padding:100px 0 0;}
-.port-grid{display:grid;grid-template-columns:repeat(3,1fr);margin-top:52px;}
-.port-cell{position:relative;overflow:hidden;aspect-ratio:2/3;}
-.port-cell img{width:100%;height:100%;object-fit:cover;transition:transform .7s ease,filter .5s;filter:brightness(.6) saturate(.9);}
-.port-cell:hover img{transform:scale(1.1);filter:brightness(.8) saturate(1.1);}
-.port-info{position:absolute;inset:0;background:linear-gradient(180deg,transparent 35%,rgba(14,14,18,.9) 100%);display:flex;flex-direction:column;justify-content:flex-end;padding:28px 24px;transition:background .4s;}
-.p-flag{font-size:22px;margin-bottom:6px;}
-.p-name{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:400;}
-.p-country{font-size:10px;letter-spacing:2px;color:var(--dim);text-transform:uppercase;margin:3px 0;}
-.p-time{font-size:12px;color:var(--gold);margin-top:6px;letter-spacing:.5px;}
-
-/* ─── PREP ─── */
-.prep{background:var(--ink);}
-.prep-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:52px;}
-.prep-card{background:rgba(255,255,255,.025);border:1px solid rgba(200,169,110,.12);padding:32px;transition:border-color .3s;}
-.prep-card:hover{border-color:rgba(200,169,110,.4);}
-.prep-icon{font-size:28px;margin-bottom:16px;}
-.prep-title{font-family:'Cormorant Garamond',serif;font-size:20px;color:var(--gold2);margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid rgba(255,255,255,.07);}
-.prep-list{list-style:none;display:flex;flex-direction:column;gap:9px;}
-.prep-list li{font-size:13px;color:var(--mist);line-height:1.55;padding-left:14px;position:relative;}
-.prep-list li::before{content:'—';position:absolute;left:0;color:var(--gold);font-size:10px;top:3px;}
-
-/* ─── PACKING ─── */
-.pack{background:var(--mid);}
-.pack-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;margin-top:52px;}
-.pack-cat{background:rgba(255,255,255,.03);padding:28px 24px;}
-.pack-cat-title{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:18px;padding-bottom:12px;border-bottom:1px solid rgba(200,169,110,.2);}
-.pack-items{list-style:none;display:flex;flex-direction:column;gap:8px;}
-.pack-items li{font-size:12px;color:var(--mist);line-height:1.5;}
-.pack-items li::before{content:'· ';color:var(--gold);}
-
-/* ─── INCLUDES ─── */
-.inc{background:var(--deep);}
-.inc-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-top:52px;}
-.inc-box{padding:44px 40px;}
-.inc-box.yes{background:rgba(200,169,110,.07);}
-.inc-box.no{background:rgba(255,255,255,.025);}
-.inc-head{font-family:'Cormorant Garamond',serif;font-size:24px;margin-bottom:28px;padding-bottom:16px;border-bottom:1px solid rgba(255,255,255,.08);}
-.inc-head .ico{margin-right:8px;}
-.inc-list{list-style:none;display:flex;flex-direction:column;gap:13px;}
-.inc-list li{font-size:14px;color:var(--mist);line-height:1.5;display:flex;gap:10px;}
-.inc-list li::before{content:'✓';color:var(--gold);flex-shrink:0;font-size:12px;margin-top:2px;}
-.no .inc-list li::before{content:'✕';color:rgba(230,100,100,.6);}
-
-/* ─── DECKS ─── */
-.decks{background:var(--ink);}
-.deck-list{margin-top:52px;display:flex;flex-direction:column;gap:2px;}
-.deck-item{display:grid;grid-template-columns:100px 1fr;border-bottom:1px solid rgba(255,255,255,.05);overflow:hidden;}
-.deck-num{background:rgba(200,169,110,.08);display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:32px;color:rgba(200,169,110,.4);font-weight:300;padding:20px;}
-.deck-body{padding:20px 28px;display:flex;align-items:center;gap:20px;flex-wrap:wrap;}
-.deck-title{font-size:15px;font-weight:500;color:var(--sand);min-width:200px;}
-.deck-desc{font-size:13px;color:var(--dim);line-height:1.5;}
-
-/* ─── TIPS ─── */
-.tips{background:var(--mid);}
-.tips-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-top:52px;}
-.tip-card{border-left:2px solid var(--gold);padding:28px 32px;background:rgba(255,255,255,.02);}
-.tip-card-title{font-family:'Cormorant Garamond',serif;font-size:20px;color:var(--gold2);margin-bottom:14px;}
-.tip-body{font-size:13px;color:var(--mist);line-height:1.9;}
-.tip-body strong{color:var(--sand);}
-.tip-body ul{padding-left:16px;margin-top:8px;display:flex;flex-direction:column;gap:6px;}
-
-/* ─── CTA ─── */
-.cta{background:linear-gradient(135deg,rgba(26,74,110,.3),rgba(14,14,18,0)),var(--deep);text-align:center;padding:120px 0;border-top:1px solid rgba(200,169,110,.15);}
-.cta-pre{font-size:10px;letter-spacing:5px;text-transform:uppercase;color:var(--gold);margin-bottom:20px;}
-.cta-h{font-family:'Cormorant Garamond',serif;font-size:clamp(40px,5vw,72px);font-weight:300;line-height:1.1;margin-bottom:14px;}
-.cta-h em{color:var(--gold);font-style:italic;}
-.cta-sub{font-size:15px;color:var(--dim);margin-bottom:52px;}
-.cta-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;}
-.btn-p{background:var(--gold);color:var(--ink);padding:17px 44px;font-size:12px;letter-spacing:2px;text-transform:uppercase;border:none;cursor:pointer;text-decoration:none;font-weight:700;transition:all .3s;}
-.btn-p:hover{background:var(--gold2);transform:translateY(-2px);}
-.btn-s{background:transparent;color:var(--sand);padding:17px 44px;font-size:12px;letter-spacing:2px;text-transform:uppercase;border:1px solid rgba(245,239,230,.25);cursor:pointer;text-decoration:none;transition:all .3s;}
-.btn-s:hover{border-color:var(--gold);color:var(--gold);}
-.cta-info{margin-top:60px;padding-top:40px;border-top:1px solid rgba(255,255,255,.07);display:flex;gap:56px;justify-content:center;flex-wrap:wrap;}
-.ci{}
-.ci-l{font-size:10px;letter-spacing:2px;color:var(--dim);text-transform:uppercase;margin-bottom:6px;}
-.ci-v{font-family:'Cormorant Garamond',serif;font-size:20px;}
-
-/* ─── FOOTER ─── */
-footer{background:#080a0f;padding:36px 52px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;border-top:1px solid rgba(200,169,110,.1);}
-.ft-logo{font-family:'Cormorant Garamond',serif;font-size:18px;color:var(--gold);letter-spacing:2px;}
-.ft-text{font-size:11px;color:var(--dim);}
-
-/* ─── SCROLL REVEAL ─── */
-.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease;}
-.reveal.in{opacity:1;transform:none;}
-
-/* ─── MOBILE ─── */
-@media(max-width:768px){
-  nav{padding:16px 20px;}
-  .nav-menu{display:none;}
-  .wrap{padding:0 20px;}
-  section{padding:72px 0;}
-  .about-grid,.inc-grid,.tips-grid{grid-template-columns:1fr;}
-  .port-grid{grid-template-columns:1fr 1fr;}
-  .prep-grid{grid-template-columns:1fr;}
-  .pack-grid{grid-template-columns:1fr 1fr;}
-  .day-row{grid-template-columns:70px 1fr;}
-  .d-time{display:none;}
-  .hero-content{padding:0 20px;}
-  .hero-scroll{right:20px;}
-  footer{padding:24px 20px;flex-direction:column;text-align:center;}
-  .cta-info{gap:28px;}
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valiant Lady - Amalfi Coast, Cannes & Ibiza | 지중해 크루즈 여행</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-<!-- NAV -->
-<nav id="nav">
-  <a class="logo" href="#">VALIANT LADY</a>
-  <ul class="nav-menu">
-    <li><a href="#about">선박</a></li>
-    <li><a href="#schedule">일정</a></li>
-    <li><a href="#ports">기항지</a></li>
-    <li><a href="#prep">준비</a></li>
-    <li><a href="#includes">포함사항</a></li>
-  </ul>
-  <a class="nav-btn" href="#cta">예약 문의</a>
-</nav>
-
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-bg"></div>
-  <div class="hero-overlay"></div>
-  <div class="hero-content">
-    <span class="hero-tag">이탈리아 · 프랑스 · 스페인</span>
-    <h1>Amalfi<br>Cannes &amp;<br><em>Ibiza</em></h1>
-    <div class="hero-meta">
-      <div class="meta-item">
-        <div class="meta-l">출발일</div>
-        <div class="meta-v">2026년 5월 25일</div>
-      </div>
-      <div class="meta-item">
-        <div class="meta-l">일정</div>
-        <div class="meta-v">6박 7일</div>
-      </div>
-      <div class="meta-item">
-        <div class="meta-l">선박</div>
-        <div class="meta-v">Valiant Lady</div>
-      </div>
-      <div class="meta-item">
-        <div class="meta-l">시작 가격</div>
-        <div class="meta-v" style="color:var(--gold)">$4,200~</div>
-      </div>
-    </div>
-    <div class="hero-route">
-      <span class="city">🇮🇹 로마</span><span class="arr">→</span>
-      <span class="city">🇮🇹 아말피</span><span class="arr">→</span>
-      <span class="city">🌊 항해일</span><span class="arr">→</span>
-      <span class="city">🇫🇷 칸</span><span class="arr">→</span>
-      <span class="city">🇪🇸 이비자</span><span class="arr">→</span>
-      <span class="city">🇪🇸 이비자</span><span class="arr">→</span>
-      <span class="city">🇪🇸 바르셀로나</span>
-    </div>
-  </div>
-  <div class="hero-scroll">
-    <div class="scroll-bar"></div>
-    <span>Scroll</span>
-  </div>
-</section>
-
-<!-- ABOUT -->
-<section class="about reveal" id="about">
-  <div class="wrap">
-    <div class="about-grid">
-      <div>
-        <p class="s-label">크루즈 소개</p>
-        <h2 class="s-title">Valiant<br><em>Lady</em></h2>
-        <div class="rule"></div>
-        <p class="about-body">
-          Virgin Voyages의 플래그십 럭셔리 크루즈 Valiant Lady.
-          성인 전용 선박으로 꾸며진 특별한 공간에서 아말피 해안의
-          절경, 칸의 화려함, 이비자의 열정적인 밤, 그리고 바르셀로나의
-          예술과 문화까지 — 지중해 최고의 순간들을 경험하세요.
-        </p>
-        <div style="margin-top:32px;display:flex;flex-direction:column;gap:16px;">
-          <div style="display:flex;gap:12px;align-items:flex-start;">
-            <span style="color:var(--gold);font-size:18px;margin-top:2px;">★</span>
-            <div>
-              <div style="font-size:14px;font-weight:500;margin-bottom:4px;">성인 전용 럭셔리</div>
-              <div style="font-size:13px;color:var(--mist);">18세 이상만 탑승 가능, 조용하고 세련된 분위기</div>
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <div class="hero-badge">6박 7일 럭셔리 크루즈</div>
+            <h1 class="hero-title">Amalfi Coast, Cannes & Ibiza</h1>
+            <p class="hero-subtitle">Valiant Lady와 함께하는 지중해의 보석들</p>
+            <div class="hero-dates">
+                <i class="far fa-calendar-alt"></i>
+                <span>2026년 5월 25일 ~ 5월 31일 (6박 7일)</span>
             </div>
-          </div>
-          <div style="display:flex;gap:12px;align-items:flex-start;">
-            <span style="color:var(--gold);font-size:18px;margin-top:2px;">★</span>
-            <div>
-              <div style="font-size:14px;font-weight:500;margin-bottom:4px;">모든 식사 포함</div>
-              <div style="font-size:13px;color:var(--mist);">20개 이상 레스토랑 무료 이용 (알콜 제외)</div>
+        </div>
+        <div class="scroll-indicator">
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </header>
+
+    <!-- Quick Info Bar -->
+    <section class="quick-info">
+        <div class="container">
+            <div class="info-grid">
+                <div class="info-item">
+                    <i class="fas fa-ship"></i>
+                    <div class="info-content">
+                        <span class="info-label">선박</span>
+                        <span class="info-value">Valiant Lady</span>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-calendar-week"></i>
+                    <div class="info-content">
+                        <span class="info-label">기간</span>
+                        <span class="info-value">6박 7일</span>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-map-marked-alt"></i>
+                    <div class="info-content">
+                        <span class="info-label">기항지</span>
+                        <span class="info-value">5개 도시</span>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-tag"></i>
+                    <div class="info-content">
+                        <span class="info-label">시작 가격</span>
+                        <span class="info-value">$4,200~</span>
+                    </div>
+                </div>
             </div>
-          </div>
-          <div style="display:flex;gap:12px;align-items:flex-start;">
-            <span style="color:var(--gold);font-size:18px;margin-top:2px;">★</span>
-            <div>
-              <div style="font-size:14px;font-weight:500;margin-bottom:4px;">기본 와이파이 포함</div>
-              <div style="font-size:13px;color:var(--mist);">소셜 미디어 기본 속도 무료 제공</div>
+        </div>
+    </section>
+
+    <!-- Route Map Section -->
+    <section class="route-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">여행 루트</h2>
+                <p class="section-subtitle">지중해의 아름다운 도시들을 항해합니다</p>
+                <p style="font-size:0.85rem; color:#7F8C8D; margin-top:8px;">(현지시간 기준)</p>
             </div>
-          </div>
+            <div class="route-map">
+                <div class="map-visual">
+                    <img src="https://www.genspark.ai/api/files/s/sH4HXHBn" alt="Mediterranean Cruise Route Map - Valiant Lady" class="map-image">
+                </div>
+                <div class="route-cities">
+                    <!-- First Row: 4 cards with images -->
+                    <div class="city-card with-image" data-day="1">
+                        <div class="city-image">
+                            <img src="https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=400&h=300&fit=crop" alt="Rome Colosseum">
+                        </div>
+                        <div class="city-icon">
+                            <i class="fas fa-anchor"></i>
+                        </div>
+                        <h3 class="city-name">로마</h3>
+                        <p class="city-country">이탈리아</p>
+                        <span class="city-time">출발 20:00</span>
+                    </div>
+                    
+                    <div class="city-card with-image highlight-card" data-day="2">
+                        <div class="city-image">
+                            <img src="https://images.unsplash.com/photo-1533105079780-92b9be482077?w=400&h=300&fit=crop" alt="Amalfi Coast">
+                        </div>
+                        <div class="city-icon">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <h3 class="city-name">아말피 해안</h3>
+                        <p class="city-country">이탈리아</p>
+                        <span class="city-time">08:00 - 19:00</span>
+                        <p class="city-desc">세계에서 가장 아름다운 해안선</p>
+                    </div>
+                    
+                    <div class="city-card with-image" data-day="3">
+                        <div class="city-image">
+                            <img src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=400&h=300&fit=crop" alt="Cruise at Sea">
+                        </div>
+                        <div class="city-icon">
+                            <i class="fas fa-water"></i>
+                        </div>
+                        <h3 class="city-name">항해일</h3>
+                        <p class="city-country">휴식의 시간</p>
+                        <span class="city-time">전일 항해</span>
+                    </div>
+                    
+                    <div class="city-card with-image" data-day="4">
+                        <div class="city-image">
+                            <img src="https://images.unsplash.com/photo-1523531294919-4bcd7c65e216?w=400&h=300&fit=crop" alt="Cannes France">
+                        </div>
+                        <div class="city-icon">
+                            <i class="fas fa-film"></i>
+                        </div>
+                        <h3 class="city-name">칸</h3>
+                        <p class="city-country">프랑스</p>
+                        <span class="city-time">08:00 - 17:00</span>
+                    </div>
+                    
+                    <!-- Second Row: 2 cards with images -->
+                    <div class="city-card with-image highlight-card" data-day="5-6">
+                        <div class="city-image">
+                            <img src="https://images.unsplash.com/photo-1505881502353-a1986add3762?w=400&h=300&fit=crop" alt="Ibiza">
+                        </div>
+                        <div class="city-icon">
+                            <i class="fas fa-music"></i>
+                        </div>
+                        <h3 class="city-name">이비자</h3>
+                        <p class="city-country">스페인</p>
+                        <span class="city-time">19:00 도착 / 다음날 17:00 출발</span>
+                        <p class="city-desc">지중해의 파티 아일랜드</p>
+                    </div>
+                    
+                    <div class="city-card with-image" data-day="7">
+                        <div class="city-image">
+                            <img src="https://images.unsplash.com/photo-1583422409516-2895a77efded?w=400&h=300&fit=crop" alt="Barcelona Sagrada Familia">
+                        </div>
+                        <div class="city-icon">
+                            <i class="fas fa-flag-checkered"></i>
+                        </div>
+                        <h3 class="city-name">바르셀로나</h3>
+                        <p class="city-country">스페인</p>
+                        <span class="city-time">도착 06:30</span>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-      <div class="ship-card">
-        <img class="ship-img" src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=700&q=80" alt="Valiant Lady">
-        <div class="ship-nm">Valiant Lady</div>
-        <div class="ship-sub">Virgin Voyages · 럭셔리 크루즈</div>
-        <div class="specs">
-          <div class="spec">
-            <div class="spec-l">총톤수</div>
-            <div class="spec-v">110,000톤</div>
-          </div>
-          <div class="spec">
-            <div class="spec-l">승객 정원</div>
-            <div class="spec-v">2,770명</div>
-          </div>
-          <div class="spec">
-            <div class="spec-l">취항연도</div>
-            <div class="spec-v">2021년</div>
-          </div>
-          <div class="spec">
-            <div class="spec-l">레스토랑</div>
-            <div class="spec-v">20개 이상</div>
-          </div>
-        </div>
-        <div class="features">
-          <span class="feat-tag">🔞 성인 전용</span>
-          <span class="feat-tag">🌿 친환경</span>
-          <span class="feat-tag">🍽️ 올인클루시브 식사</span>
-          <span class="feat-tag">🧖 풀서비스 스파</span>
-          <span class="feat-tag">💪 피트니스</span>
-          <span class="feat-tag">🎭 공연·엔터테인먼트</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-<!-- SCHEDULE -->
-<section class="sched reveal" id="schedule">
-  <div class="wrap">
-    <p class="s-label">상세 일정</p>
-    <h2 class="s-title">7일간의 <em>항해</em></h2>
-    <div class="rule"></div>
-    <div class="days">
-      <div class="day-row">
-        <div><div class="d-num">1</div><div class="d-date">5/25 월</div></div>
-        <div class="d-body">
-          <div class="d-loc">🇮🇹 로마 (치비타베키아)</div>
-          <div class="d-country">이탈리아 · 승선일</div>
-          <div class="d-desc">영원의 도시 로마에서 여정을 시작합니다. 출발 1시간 전까지 승선을 완료해주세요.</div>
-          <div class="d-tags"><span class="d-tag">승선 마감 19:00</span><span class="d-tag">출발 20:00</span></div>
-        </div>
-        <div class="d-time"><div class="d-time-val">출발 20:00</div><div class="d-time-l">DEPARTURE</div></div>
-      </div>
-      <div class="day-row">
-        <div><div class="d-num">2</div><div class="d-date">5/26 화</div></div>
-        <div class="d-body">
-          <div class="d-loc">🇮🇹 아말피 해안 (살레르노)</div>
-          <div class="d-country">이탈리아 · AMALFI COAST</div>
-          <div class="d-desc">세계에서 가장 아름다운 해안선으로 손꼽히는 아말피 코스트를 탐험합니다. 절벽을 따라 펼쳐진 레몬 나무와 파스텔톤 마을들의 환상적인 조화.</div>
-          <div class="d-tags"><span class="d-tag">📸 포토존</span><span class="d-tag">🍋 현지 미식</span><span class="d-tag">🏛️ 문화유산</span></div>
-        </div>
-        <div class="d-time"><div class="d-time-val">08:00 – 19:00</div><div class="d-time-l">PORT CALL</div></div>
-      </div>
-      <div class="day-row sea-row">
-        <div><div class="d-num">3</div><div class="d-date">5/27 수</div></div>
-        <div class="d-body">
-          <div class="d-loc">🌊 전일 항해</div>
-          <div class="d-country">SEA DAY · 선내 자유 이용</div>
-          <div class="d-desc">드넓은 지중해를 항해하며 선상 시설을 마음껏 즐기세요. 스파, 수영장, 바 & 라운지에서 완전한 휴식을.</div>
-          <div class="d-tags"><span class="d-tag">🧖 스파</span><span class="d-tag">🏊 수영장</span><span class="d-tag">🍹 바 & 라운지</span></div>
-        </div>
-        <div class="d-time"><div class="d-time-val">전일 항해</div><div class="d-time-l">SEA DAY</div></div>
-      </div>
-      <div class="day-row">
-        <div><div class="d-num">4</div><div class="d-date">5/28 목</div></div>
-        <div class="d-body">
-          <div class="d-loc">🇫🇷 칸</div>
-          <div class="d-country">프랑스 · CANNES</div>
-          <div class="d-desc">칸 국제영화제로 유명한 프렌치 리비에라의 보석. 크루아제트 해변을 따라 걷고, 고급 부티크와 카페를 즐기세요.</div>
-          <div class="d-tags"><span class="d-tag">🛍️ 쇼핑</span><span class="d-tag">🎬 영화제</span><span class="d-tag">🏖️ 비치</span></div>
-        </div>
-        <div class="d-time"><div class="d-time-val">08:00 – 17:00</div><div class="d-time-l">PORT CALL</div></div>
-      </div>
-      <div class="day-row">
-        <div><div class="d-num">5</div><div class="d-date">5/29 금</div></div>
-        <div class="d-body">
-          <div class="d-loc">🇪🇸 이비자 (도착)</div>
-          <div class="d-country">스페인 · IBIZA</div>
-          <div class="d-desc">세계적인 파티 아일랜드 이비자. 저녁에 도착하여 지중해 최고의 나이트라이프를 경험하세요.</div>
-          <div class="d-tags"><span class="d-tag">🌙 나이트라이프</span><span class="d-tag">🎵 비치 클럽</span></div>
-        </div>
-        <div class="d-time"><div class="d-time-val">19:00 도착</div><div class="d-time-l">ARRIVAL</div></div>
-      </div>
-      <div class="day-row">
-        <div><div class="d-num">6</div><div class="d-date">5/30 토</div></div>
-        <div class="d-body">
-          <div class="d-loc">🇪🇸 이비자 (출발)</div>
-          <div class="d-country">스페인 · IBIZA</div>
-          <div class="d-desc">이비자의 낮을 온전히 즐기세요. 유네스코 세계문화유산 구시가지 다르트 비야, 에메랄드빛 해변, 해양 액티비티까지.</div>
-          <div class="d-tags"><span class="d-tag">🏰 구시가지</span><span class="d-tag">🤿 해양 액티비티</span><span class="d-tag">☀️ 해변</span></div>
-        </div>
-        <div class="d-time"><div class="d-time-val">17:00 출발</div><div class="d-time-l">DEPARTURE</div></div>
-      </div>
-      <div class="day-row">
-        <div><div class="d-num">7</div><div class="d-date">5/31 일</div></div>
-        <div class="d-body">
-          <div class="d-loc">🇪🇸 바르셀로나</div>
-          <div class="d-country">스페인 · BARCELONA · 하선일</div>
-          <div class="d-desc">가우디의 도시 바르셀로나에서 아름다운 여정을 마무리합니다. 사그라다 파밀리아, 구엘 공원, 고딕 지구를 둘러보세요.</div>
-          <div class="d-tags"><span class="d-tag">⛪ 사그라다파밀리아</span><span class="d-tag">🎨 예술 & 문화</span></div>
-        </div>
-        <div class="d-time"><div class="d-time-val">06:30 도착</div><div class="d-time-l">ARRIVAL</div></div>
-      </div>
-    </div>
-  </div>
-</section>
+    <!-- Itinerary Section -->
+    <section class="itinerary-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">상세 일정</h2>
+                <p class="section-subtitle">매일매일 특별한 경험이 기다립니다</p>
+            </div>
+            <div class="itinerary-timeline">
+                <div class="timeline-item">
+                    <div class="timeline-marker">
+                        <span class="day-number">Day 1</span>
+                    </div>
+                    <div class="timeline-content">
+                        <h3 class="timeline-title">로마 (치비타베키아), 이탈리아</h3>
+                        <p class="timeline-time">출발: 20:00</p>
+                        <p class="timeline-description">영원의 도시 로마에서 여정을 시작합니다. 출발 1시간 전까지 승선을 완료해주세요.</p>
+                        <div class="timeline-highlights">
+                            <span class="highlight-tag"><i class="fas fa-info-circle"></i> 승선 마감: 19:00</span>
+                        </div>
+                    </div>
+                </div>
 
-<!-- PORTS GALLERY -->
-<section class="gallery-sec reveal" id="ports">
-  <div class="wrap">
-    <p class="s-label">기항지</p>
-    <h2 class="s-title">꿈의 <em>기항지들</em></h2>
-    <div class="rule"></div>
-  </div>
-  <div class="port-grid">
-    <div class="port-cell">
-      <img src="https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=600&q=80" alt="로마">
-      <div class="port-info">
-        <div class="p-flag">🇮🇹</div>
-        <div class="p-name">로마</div>
-        <div class="p-country">ROME · ITALY</div>
-        <div class="p-time">5.25 출발</div>
-      </div>
-    </div>
-    <div class="port-cell">
-      <img src="https://images.unsplash.com/photo-1533105079780-92b9be482077?w=600&q=80" alt="아말피">
-      <div class="port-info">
-        <div class="p-flag">🇮🇹</div>
-        <div class="p-name">아말피 해안</div>
-        <div class="p-country">AMALFI COAST · ITALY</div>
-        <div class="p-time">5.26 · 08:00–19:00</div>
-      </div>
-    </div>
-    <div class="port-cell">
-      <img src="https://images.unsplash.com/photo-1523531294919-4bcd7c65e216?w=600&q=80" alt="칸">
-      <div class="port-info">
-        <div class="p-flag">🇫🇷</div>
-        <div class="p-name">칸</div>
-        <div class="p-country">CANNES · FRANCE</div>
-        <div class="p-time">5.28 · 08:00–17:00</div>
-      </div>
-    </div>
-    <div class="port-cell">
-      <img src="https://images.unsplash.com/photo-1505881502353-a1986add3762?w=600&q=80" alt="이비자">
-      <div class="port-info">
-        <div class="p-flag">🇪🇸</div>
-        <div class="p-name">이비자</div>
-        <div class="p-country">IBIZA · SPAIN</div>
-        <div class="p-time">5.29–30 · 1박 2일</div>
-      </div>
-    </div>
-    <div class="port-cell" style="grid-column:span 2;">
-      <img src="https://images.unsplash.com/photo-1583422409516-2895a77efded?w=1200&q=80" alt="바르셀로나" style="aspect-ratio:unset;height:100%;">
-      <div class="port-info">
-        <div class="p-flag">🇪🇸</div>
-        <div class="p-name">바르셀로나</div>
-        <div class="p-country">BARCELONA · SPAIN</div>
-        <div class="p-time">5.31 하선 · 06:30 도착</div>
-      </div>
-    </div>
-  </div>
-</section>
+                <div class="timeline-item">
+                    <div class="timeline-marker">
+                        <span class="day-number">Day 2</span>
+                    </div>
+                    <div class="timeline-content">
+                        <h3 class="timeline-title">아말피 해안 (살레르노), 이탈리아</h3>
+                        <p class="timeline-time">기항: 08:00 - 19:00</p>
+                        <p class="timeline-description">세계에서 가장 아름다운 해안선으로 손꼽히는 아말피 코스트를 탐험합니다.</p>
+                        <div class="timeline-highlights">
+                            <span class="highlight-tag"><i class="fas fa-camera"></i> 포토존</span>
+                            <span class="highlight-tag"><i class="fas fa-utensils"></i> 현지 미식</span>
+                            <span class="highlight-tag"><i class="fas fa-landmark"></i> 문화유산</span>
+                        </div>
+                    </div>
+                </div>
 
-<!-- INCLUDES -->
-<section class="inc reveal" id="includes">
-  <div class="wrap">
-    <p class="s-label">상품 구성</p>
-    <h2 class="s-title">포함 / 불포함 <em>사항</em></h2>
-    <div class="rule"></div>
-  </div>
-  <div class="inc-grid">
-    <div class="inc-box yes">
-      <div class="inc-head"><span class="ico">✔</span> 포함사항</div>
-      <ul class="inc-list">
-        <li>6박 크루즈 숙박 (선택 객실 등급)</li>
-        <li>전 일정 선상 식사 — 조식, 중식, 석식 (20+ 레스토랑)</li>
-        <li>기본 와이파이 (소셜 미디어 속도)</li>
-        <li>선상 엔터테인먼트 (쇼 & 공연)</li>
-        <li>수영장 & 피트니스 센터 이용</li>
-        <li>크루즈 전문 인솔자 동행</li>
-      </ul>
-    </div>
-    <div class="inc-box no">
-      <div class="inc-head"><span class="ico" style="color:rgba(230,100,100,.7)">✗</span> 불포함사항</div>
-      <ul class="inc-list">
-        <li>왕복 항공료</li>
-        <li>알코올 음료 (음료 패키지 별도 구매 가능)</li>
-        <li>룸서비스 (추가 요금)</li>
-        <li>스파 & 마사지 트리트먼트</li>
-        <li>기항지 옵션 투어</li>
-        <li>프리미엄 와이파이 업그레이드</li>
-        <li>팁 & 봉사료</li>
-      </ul>
-    </div>
-  </div>
-</section>
+                <div class="timeline-item">
+                    <div class="timeline-marker">
+                        <span class="day-number">Day 3</span>
+                    </div>
+                    <div class="timeline-content">
+                        <h3 class="timeline-title">Sea Day - 항해일</h3>
+                        <p class="timeline-time">전일 항해</p>
+                        <p class="timeline-description">선상에서 여유로운 하루를 보냅니다. 다양한 시설과 프로그램을 즐기세요.</p>
+                        <div class="timeline-highlights">
+                            <span class="highlight-tag"><i class="fas fa-spa"></i> 스파 & 웰니스</span>
+                            <span class="highlight-tag"><i class="fas fa-swimming-pool"></i> 수영장</span>
+                            <span class="highlight-tag"><i class="fas fa-cocktail"></i> 바 & 라운지</span>
+                        </div>
+                    </div>
+                </div>
 
-<!-- DECKS -->
-<section class="decks reveal" id="decks">
-  <div class="wrap">
-    <p class="s-label">선박 안내</p>
-    <h2 class="s-title">층별 <em>시설</em></h2>
-    <div class="rule"></div>
-    <div class="deck-list">
-      <div class="deck-item"><div class="deck-num">15</div><div class="deck-body"><div class="deck-title">🌅 The Perch — 최상층 전망 데크</div><div class="deck-desc">360도 파노라마 뷰 · 조깅 트랙 · 일광욕 데크</div></div></div>
-      <div class="deck-item"><div class="deck-num">14</div><div class="deck-body"><div class="deck-title">🏊 Sun Deck — 수영장 & 야외 활동</div><div class="deck-desc">메인 수영장 · 자쿠지 · 풀사이드 바 · The Dock 아쿠아틱 클럽</div></div></div>
-      <div class="deck-item"><div class="deck-num">13</div><div class="deck-body"><div class="deck-title">🎭 Entertainment Deck</div><div class="deck-desc">라이브 뮤직 라운지 · 칵테일 바 · 쇼 & 공연</div></div></div>
-      <div class="deck-item"><div class="deck-num">11</div><div class="deck-body"><div class="deck-title">🛍️ Plaza Deck — 쇼핑 & 서비스</div><div class="deck-desc">면세점 · 포토 갤러리 · Virgin Voyages Shop</div></div></div>
-      <div class="deck-item"><div class="deck-num">10</div><div class="deck-body"><div class="deck-title">🧘 Wellness Deck — 스파 & 피트니스</div><div class="deck-desc">Redemption Spa · B-Complex 피트니스 · 요가 & 명상 스튜디오</div></div></div>
-      <div class="deck-item"><div class="deck-num">7–9</div><div class="deck-body"><div class="deck-title">🛏️ Cabin Decks — 객실</div><div class="deck-desc">Insider · Sea View · Sea Terrace (발코니) · RockStar Suites</div></div></div>
-      <div class="deck-item"><div class="deck-num">6</div><div class="deck-body"><div class="deck-title">🎪 Central Park — 소셜 허브</div><div class="deck-desc">The Manor 나이트클럽 · 카페 & 베이커리 · 게임 라운지</div></div></div>
-      <div class="deck-item"><div class="deck-num">5</div><div class="deck-body"><div class="deck-title">🎨 Arts & Culture</div><div class="deck-desc">아트 갤러리 · 강연장 · Sailor Services 안내데스크</div></div></div>
-      <div class="deck-item"><div class="deck-num">3–4</div><div class="deck-body"><div class="deck-title">🚢 Lower Decks</div><div class="deck-desc">Medical Center (4층, 응급 911) · 승무원 구역</div></div></div>
-    </div>
-  </div>
-</section>
+                <div class="timeline-item">
+                    <div class="timeline-marker">
+                        <span class="day-number">Day 4</span>
+                    </div>
+                    <div class="timeline-content">
+                        <h3 class="timeline-title">칸, 프랑스</h3>
+                        <p class="timeline-time">기항: 08:00 - 17:00</p>
+                        <p class="timeline-description">칸 영화제로 유명한 화려한 도시 칸에서 프렌치 리비에라의 매력을 만끽합니다.</p>
+                        <div class="timeline-highlights">
+                            <span class="highlight-tag"><i class="fas fa-shopping-bag"></i> 쇼핑</span>
+                            <span class="highlight-tag"><i class="fas fa-film"></i> 영화제</span>
+                            <span class="highlight-tag"><i class="fas fa-sun"></i> 비치</span>
+                        </div>
+                    </div>
+                </div>
 
-<!-- PREP -->
-<section class="prep reveal" id="prep">
-  <div class="wrap">
-    <p class="s-label">여행 전 준비</p>
-    <h2 class="s-title">출발 전 <em>체크리스트</em></h2>
-    <div class="rule"></div>
-    <div class="prep-grid">
-      <div class="prep-card">
-        <div class="prep-icon">✈️</div>
-        <div class="prep-title">항공 & 예약 확인</div>
-        <ul class="prep-list">
-          <li>크루즈 예약번호 · 캐빈번호 · 영문 스펠링 확인</li>
-          <li>항공편 시간 · 수하물 규정 · 좌석 사전 지정</li>
-          <li>공항까지 교통편 예약 (터미널 확인)</li>
-          <li>출항 당일 지연 대비 여유 일정 확보</li>
-          <li>객실 타입별 무료 사항 재확인 (와이파이·주류)</li>
-        </ul>
-      </div>
-      <div class="prep-card">
-        <div class="prep-icon">🚢</div>
-        <div class="prep-title">승선 당일 체크인</div>
-        <ul class="prep-list">
-          <li>터미널 도착 권장: 출항 <strong>2~3시간 전</strong></li>
-          <li>📍 Terminal Amerigo Vespucci, Civitavecchia, Italy</li>
-          <li>대형 수하물 위탁 후 객실로 자동 전달</li>
-          <li>여권 + 예약증 항상 손에 들고 있기</li>
-          <li>체크인 후 선내 결제 계정에 신용카드 등록</li>
-          <li>승선 즉시 앱에서 레스토랑 예약하기</li>
-        </ul>
-      </div>
-      <div class="prep-card">
-        <div class="prep-icon">📱</div>
-        <div class="prep-title">필수 앱 설치</div>
-        <ul class="prep-list">
-          <li><strong>Virgin Voyages 앱</strong> — 출발 전 미리 로그인 (승선 후 잘 안될 수 있음)</li>
-          <li>Google Maps (오프라인 지도 다운)</li>
-          <li>Google 번역 / ChatGPT</li>
-          <li>Uber / Grab (기항지 이동용)</li>
-          <li>XE 환율 앱 · WhatsApp</li>
-          <li>KLOOK / 마이리얼트립 (투어 예약)</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
+                <div class="timeline-item">
+                    <div class="timeline-marker">
+                        <span class="day-number">Day 5</span>
+                    </div>
+                    <div class="timeline-content">
+                        <h3 class="timeline-title">이비자, 스페인</h3>
+                        <p class="timeline-time">도착: 19:00</p>
+                        <p class="timeline-description">세계적인 파티 아일랜드 이비자의 저녁을 만끽합니다.</p>
+                        <div class="timeline-highlights">
+                            <span class="highlight-tag"><i class="fas fa-music"></i> 나이트라이프</span>
+                            <span class="highlight-tag"><i class="fas fa-umbrella-beach"></i> 비치 클럽</span>
+                        </div>
+                    </div>
+                </div>
 
-<!-- TIPS -->
-<section class="tips reveal" id="tips">
-  <div class="wrap">
-    <p class="s-label">꼭 알아야 할 정보</p>
-    <h2 class="s-title">여행 <em>꿀팁</em></h2>
-    <div class="rule"></div>
-    <div class="tips-grid">
-      <div class="tip-card">
-        <div class="tip-card-title">🍽️ 레스토랑 예약 가이드</div>
-        <div class="tip-body">
-          <strong>식당 예약 오픈 시기</strong>
-          <ul>
-            <li>Essential: 출항 45일 전부터</li>
-            <li>Premium: 출항 60일 전부터</li>
-            <li>RockStar 스위트: 출항 120일 전부터</li>
-          </ul>
-          <br>
-          6~8박 기준 식당당 <strong>최대 2회</strong> 예약 가능.<br>
-          <strong>Gunbae(건배)</strong>, <strong>Pink Agave</strong>는 좌석이 적어 가장 빨리 마감되니 <strong>최우선 예약</strong> 권장!<br>
-          예약 슬롯의 약 70%는 승선 당일 오픈 → 승선 즉시 앱에서 추가 예약.
+                <div class="timeline-item">
+                    <div class="timeline-marker">
+                        <span class="day-number">Day 6</span>
+                    </div>
+                    <div class="timeline-content">
+                        <h3 class="timeline-title">이비자, 스페인</h3>
+                        <p class="timeline-time">출발: 17:00</p>
+                        <p class="timeline-description">이비자의 아름다운 해변과 구시가지를 탐험할 수 있는 하루입니다.</p>
+                        <div class="timeline-highlights">
+                            <span class="highlight-tag"><i class="fas fa-city"></i> 구시가지</span>
+                            <span class="highlight-tag"><i class="fas fa-water"></i> 해양 액티비티</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-marker">
+                        <span class="day-number">Day 7</span>
+                    </div>
+                    <div class="timeline-content">
+                        <h3 class="timeline-title">바르셀로나, 스페인</h3>
+                        <p class="timeline-time">도착: 06:30</p>
+                        <p class="timeline-description">가우디의 도시 바르셀로나에서 멋진 여정을 마무리합니다.</p>
+                        <div class="timeline-highlights">
+                            <span class="highlight-tag"><i class="fas fa-church"></i> 사그라다 파밀리아</span>
+                            <span class="highlight-tag"><i class="fas fa-palette"></i> 예술 & 문화</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-      <div class="tip-card">
-        <div class="tip-card-title">🔑 객실 카드 주의사항</div>
-        <div class="tip-body">
-          객실 카드는 신분증 역할을 하므로 <strong>절대 룸메이트와 바꿔서 들고 다니면 안됩니다.</strong><br><br>
-          기항지 출입 시 바꿔 들고 가다가 못 나오는 경우가 발생할 수 있습니다.<br>
-          분실 시 안내데스크에서 즉시 재발급 받으세요.<br><br>
-          카드 기능: 식사·음료 결제 / 하선·재승선 확인 / 객실 도어락
+    </section>
+
+    <!-- Inclusions Section -->
+    <section class="inclusions-section">
+        <div class="container">
+            <div class="inclusions-grid">
+                <div class="inclusions-box">
+                    <div class="inclusions-header">
+                        <i class="fas fa-check-circle"></i>
+                        <h3>포함 사항</h3>
+                    </div>
+                    <ul class="inclusions-list">
+                        <li><i class="fas fa-ship"></i> 6박 크루즈 숙박</li>
+                        <li><i class="fas fa-utensils"></i> 선상 식사 (조식, 중식, 석식) (무료)</li>
+                        <li><i class="fas fa-glass-cheers"></i> 선상 엔터테인먼트</li>
+                        <li><i class="fas fa-swimming-pool"></i> 수영장 & 피트니스 이용</li>
+                        <li><i class="fas fa-wifi"></i> 기본 와이파이</li>
+                        <li><i class="fas fa-theater-masks"></i> 쇼 & 공연 (매일 다름)</li>
+                    </ul>
+                </div>
+                <div class="inclusions-box exclusions">
+                    <div class="inclusions-header">
+                        <i class="fas fa-times-circle"></i>
+                        <h3>불포함 사항</h3>
+                    </div>
+                    <ul class="inclusions-list">
+                        <li><i class="fas fa-plane"></i> 왕복 항공료</li>
+                        <li><i class="fas fa-cocktail"></i> 알코올 음료</li>
+                        <li><i class="fas fa-concierge-bell"></i> 룸서비스 (추가 요금)</li>
+                        <li><i class="fas fa-spa"></i> 스파 & 마사지</li>
+                        <li><i class="fas fa-map-marked-alt"></i> 기항지 투어 (옵션)</li>
+                        <li><i class="fas fa-wifi"></i> 프리미엄 와이파이</li>
+                        <li><i class="fas fa-hands-helping"></i> 팁 & 봉사료</li>
+                    </ul>
+                </div>
+            </div>
         </div>
-      </div>
-      <div class="tip-card">
-        <div class="tip-card-title">🍾 주류 & 와이파이 정책</div>
-        <div class="tip-body">
-          객실에 있는 음료는 <strong>모두 유료</strong>입니다. 드시기 전에 꼭 확인하세요.<br><br>
-          <ul>
-            <li>와인 1병까지 반입 가능</li>
-            <li>미니 소주 반입 주로 가능</li>
-            <li>드론, 멀티탭 반입 불가</li>
-            <li>추가 알콜은 크루즈에서 보관 후 마지막 날 반환</li>
-          </ul>
-          <br>
-          와이파이 · 음료 패키지는 <strong>어플에서 미리 구매하면 더 저렴</strong>합니다.
+    </section>
+
+    <!-- Ship Info Section -->
+    <section class="ship-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Valiant Lady <span style="font-size:0.55em; font-weight:400; color:#7F8C8D;">(밸리언트 레이디)</span></h2>
+                <p class="section-subtitle">Virgin Voyages의 럭셔리 크루즈 선박</p>
+            </div>
+            <div class="ship-content">
+                <div class="ship-image">
+                    <img src="https://www.genspark.ai/api/files/s/1qDzpHmg" alt="Valiant Lady - Virgin Voyages">
+                </div>
+                <div class="ship-details">
+                    <div class="ship-stats">
+                        <div class="stat-item">
+                            <i class="fas fa-ship"></i>
+                            <div class="stat-content">
+                                <span class="stat-label">선박명</span>
+                                <span class="stat-value">Valiant Lady</span>
+                            </div>
+                        </div>
+                        <div class="stat-item">
+                            <i class="fas fa-users"></i>
+                            <div class="stat-content">
+                                <span class="stat-label">승객 수용</span>
+                                <span class="stat-value">2,770명</span>
+                            </div>
+                        </div>
+                        <div class="stat-item">
+                            <i class="fas fa-weight"></i>
+                            <div class="stat-content">
+                                <span class="stat-label">총톤수</span>
+                                <span class="stat-value">110,000톤</span>
+                            </div>
+                        </div>
+                        <div class="stat-item">
+                            <i class="fas fa-calendar"></i>
+                            <div class="stat-content">
+                                <span class="stat-label">취항년도</span>
+                                <span class="stat-value">2021년</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ship-features">
+                        <h4>선박 특징</h4>
+                        <div class="feature-tags">
+                            <span class="feature-tag"><i class="fas fa-star"></i> 성인 전용</span>
+                            <span class="feature-tag"><i class="fas fa-leaf"></i> 친환경 선박</span>
+                            <span class="feature-tag"><i class="fas fa-utensils"></i> 20+ 레스토랑</span>
+                            <span class="feature-tag"><i class="fas fa-cocktail"></i> 다양한 바</span>
+                            <span class="feature-tag"><i class="fas fa-dumbbell"></i> 피트니스 센터</span>
+                            <span class="feature-tag"><i class="fas fa-spa"></i> 풀서비스 스파</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-      <div class="tip-card">
-        <div class="tip-card-title">🎭 공연 & 엔터테인먼트</div>
-        <div class="tip-body">
-          Red Room, The Manor 메인 공연은 <strong>예약 불필요</strong> (선착순 입장).<br><br>
-          웰니스 클래스, 요리 클래스 등 일부 이벤트는 승선 후 앱에서 예약 가능.<br>
-          인기 공연은 <strong>20~30분 전</strong> 일찍 도착 권장.<br><br>
-          선상신문(Daily Program)이 매일 객실에 배달되니 당일 일정을 꼭 확인하세요.
+    </section>
+
+    <!-- Deck Plan Section -->
+    <section class="deck-plan-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title"><i class="fas fa-layer-group"></i> 층별 안내 (Deck Plan)</h2>
+                <p class="section-subtitle">Valiant Lady의 모든 층을 살펴보세요</p>
+            </div>
+            
+            <div class="deck-plan-content">
+                <div class="deck-overview">
+                    <p style="text-align:center; font-size:1rem; color:#555; padding:16px 20px; background:#EEF4FF; border-radius:12px; margin-bottom:24px;">
+                        <i class="fas fa-info-circle" style="color:#3498DB; margin-right:8px;"></i>
+                        Valiant Lady는 총 <strong>15개의 데크</strong>로 구성되어 있으며, 각 층마다 독특한 시설과 경험을 제공합니다.
+                    </p>
+                </div>
+
+                <div class="deck-list">
+                    <!-- Deck 15 -->
+                    <div class="deck-card top-deck">
+                        <div class="deck-number">Deck 15</div>
+                        <div class="deck-info">
+                            <h3 class="deck-name">🌅 The Perch <span style="font-size:0.65em; font-weight:400; color:#7F8C8D;">(더 퍼치)</span></h3>
+                            <p class="deck-description">최상층 전망 데크</p>
+                            <ul class="deck-facilities">
+                                <li><i class="fas fa-binoculars"></i> 360도 파노라마 뷰</li>
+                                <li><i class="fas fa-running"></i> 조깅 트랙</li>
+                                <li><i class="fas fa-sun"></i> 일광욕 데크</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Deck 14 -->
+                    <div class="deck-card">
+                        <div class="deck-number">Deck 14</div>
+                        <div class="deck-info">
+                            <h3 class="deck-name">🏊 Sun Deck <span style="font-size:0.65em; font-weight:400; color:#7F8C8D;">(선 덱)</span></h3>
+                            <p class="deck-description">수영장 & 야외 활동</p>
+                            <ul class="deck-facilities">
+                                <li><i class="fas fa-swimming-pool"></i> 메인 수영장</li>
+                                <li><i class="fas fa-hot-tub"></i> 자쿠지</li>
+                                <li><i class="fas fa-cocktail"></i> 풀사이드 바</li>
+                                <li><i class="fas fa-music"></i> The Dock (아쿠아틱 클럽)</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Deck 13 -->
+                    <div class="deck-card">
+                        <div class="deck-number">Deck 13</div>
+                        <div class="deck-info">
+                            <h3 class="deck-name">🎭 Entertainment Deck <span style="font-size:0.65em; font-weight:400; color:#7F8C8D;">(엔터테인먼트 덱)</span></h3>
+                            <p class="deck-description">엔터테인먼트 & 쇼</p>
+                            <ul class="deck-facilities">
+                                <li><i class="fas fa-guitar"></i> 라이브 뮤직 라운지</li>
+                                <li><i class="fas fa-glass-martini"></i> 칵테일 바</li>
+                            </ul>
+                        </div>
+                    </div>
+
+
+                    <!-- Deck 11 -->
+                    <div class="deck-card">
+                        <div class="deck-number">Deck 11</div>
+                        <div class="deck-info">
+                            <h3 class="deck-name">🛍️ Plaza Deck <span style="font-size:0.65em; font-weight:400; color:#7F8C8D;">(플라자 덱)</span></h3>
+                            <p class="deck-description">쇼핑 & 서비스</p>
+                            <ul class="deck-facilities">
+                                <li><i class="fas fa-shopping-bag"></i> 면세점</li>
+                                <li><i class="fas fa-camera"></i> 포토 갤러리</li>
+                                <li><i class="fas fa-gift"></i> Virgin Voyage Shop</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Deck 10 -->
+                    <div class="deck-card">
+                        <div class="deck-number">Deck 10</div>
+                        <div class="deck-info">
+                            <h3 class="deck-name">🧘 Wellness Deck <span style="font-size:0.65em; font-weight:400; color:#7F8C8D;">(웰니스 덱)</span></h3>
+                            <p class="deck-description">스파 & 피트니스</p>
+                            <ul class="deck-facilities">
+                                <li><i class="fas fa-spa"></i> Redemption Spa</li>
+                                <li><i class="fas fa-dumbbell"></i> B-Complex 피트니스</li>
+                                <li><i class="fas fa-heartbeat"></i> 요가 & 명상 스튜디오</li>
+                                <li><i class="fas fa-running"></i> 개인 트레이닝</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Deck 7-9 -->
+                    <div class="deck-card cabin-deck">
+                        <div class="deck-number">Deck 7-9</div>
+                        <div class="deck-info">
+                            <h3 class="deck-name">🛏️ Cabin Decks <span style="font-size:0.65em; font-weight:400; color:#7F8C8D;">(캐빈 덱)</span></h3>
+                            <p class="deck-description">객실 층</p>
+                            <ul class="deck-facilities">
+                                <li><i class="fas fa-bed"></i> 내측 객실 (Insider)</li>
+                                <li><i class="fas fa-door-open"></i> 바다 전망 객실 (Sea View)</li>
+                                <li><i class="fas fa-home"></i> 발코니 객실 (Sea Terrace)</li>
+                                <li><i class="fas fa-crown"></i> 스위트 (RockStar Suites)</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Deck 6 -->
+                    <div class="deck-card highlight-deck">
+                        <div class="deck-number">Deck 6</div>
+                        <div class="deck-info">
+                            <h3 class="deck-name">🎪 Central Park <span style="font-size:0.65em; font-weight:400; color:#7F8C8D;">(센트럴 파크)</span></h3>
+                            <p class="deck-description">중앙 광장 & 소셜 허브</p>
+                            <ul class="deck-facilities">
+                                <li><i class="fas fa-theater-masks"></i> The Manor (더 매너) - 메인 공연장 & 나이트클럽 (6~7층 2층 구조, 메인 입구는 7층)</li>
+                                <li><i class="fas fa-coffee"></i> 카페 & 베이커리</li>
+                                <li><i class="fas fa-ice-cream"></i> 아이스크림 바</li>
+                                <li><i class="fas fa-book"></i> 도서관 & 독서 공간</li>
+                                <li><i class="fas fa-gamepad"></i> 게임 라운지</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Deck 5 -->
+                    <div class="deck-card">
+                        <div class="deck-number">Deck 5</div>
+                        <div class="deck-info">
+                            <h3 class="deck-name">🎨 Arts & Culture <span style="font-size:0.65em; font-weight:400; color:#7F8C8D;">(아츠 & 컬처)</span></h3>
+                            <p class="deck-description">문화 & 예술 공간</p>
+                            <ul class="deck-facilities">
+                                <li><i class="fas fa-palette"></i> 아트 갤러리</li>
+                                <li><i class="fas fa-microphone"></i> 강연장</li>
+                                <li><i class="fas fa-headphones"></i> 음악 스튜디오</li>
+                                <li><i class="fas fa-concierge-bell"></i> Sailor Services (세일러 서비스) - 게스트 서비스 & 안내 데스크</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Deck 3-4 -->
+                    <div class="deck-card">
+                        <div class="deck-number">Deck 3-4</div>
+                        <div class="deck-info">
+                            <h3 class="deck-name">🚢 Lower Decks <span style="font-size:0.65em; font-weight:400; color:#7F8C8D;">(로워 덱)</span></h3>
+                            <p class="deck-description">승무원 구역 & 기관실</p>
+                            <ul class="deck-facilities">
+                                <li><i class="fas fa-plus-circle"></i> Medical Center (메디컬 센터) - 병원 (4층) / 응급 시 선내 전화 911</li>
+                                <li><i class="fas fa-users-cog"></i> 승무원 구역</li>
+                                <li><i class="fas fa-cogs"></i> 엔진실 & 기술 구역</li>
+                                <li><i class="fas fa-warehouse"></i> 화물 보관</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="deck-legend">
+                    <h4>시설 아이콘 안내</h4>
+                    <div class="legend-grid">
+                        <span class="legend-item"><i class="fas fa-utensils"></i> 레스토랑 & 다이닝</span>
+                        <span class="legend-item"><i class="fas fa-cocktail"></i> 바 & 라운지</span>
+                        <span class="legend-item"><i class="fas fa-swimming-pool"></i> 수영장 & 스파</span>
+                        <span class="legend-item"><i class="fas fa-theater-masks"></i> 엔터테인먼트</span>
+                        <span class="legend-item"><i class="fas fa-bed"></i> 객실</span>
+                        <span class="legend-item"><i class="fas fa-dumbbell"></i> 피트니스 & 웰니스</span>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-<!-- PACKING -->
-<section class="pack reveal" id="packing">
-  <div class="wrap">
-    <p class="s-label">짐 싸기</p>
-    <h2 class="s-title">준비물 <em>리스트</em></h2>
-    <div class="rule"></div>
-  </div>
-  <div class="pack-grid">
-    <div class="pack-cat">
-      <div class="pack-cat-title">📄 서류 / 결제</div>
-      <ul class="pack-items">
-        <li>여권 (유효기간 6개월 이상)</li>
-        <li>항공권 / 크루즈 예약 확인서</li>
-        <li>해외 신용카드 (비자 / 마스터)</li>
-        <li>해외여행자 보험 증서</li>
-        <li>소액 유로 현금 (비상용)</li>
-      </ul>
-    </div>
-    <div class="pack-cat">
-      <div class="pack-cat-title">👗 의상 / 용품</div>
-      <ul class="pack-items">
-        <li>포멀 웨어 (갈라 디너용)</li>
-        <li>비치웨어 / 수영복</li>
-        <li>운동화 / 샌들</li>
-        <li>썬크림 · 모자 · 선글라스</li>
-        <li>우천 대비 경량 우산</li>
-      </ul>
-    </div>
-    <div class="pack-cat">
-      <div class="pack-cat-title">💊 건강 / 위생</div>
-      <ul class="pack-items">
-        <li>멀미약 (필수!)</li>
-        <li>소화제 · 두통약 · 감기약</li>
-        <li>인공눈물 · 마스크</li>
-        <li>치약 / 칫솔 (샴푸 등은 제공)</li>
-        <li>개인 복용약 (충분히 챙기기)</li>
-      </ul>
-    </div>
-    <div class="pack-cat">
-      <div class="pack-cat-title">🍜 간식 / 기타</div>
-      <ul class="pack-items">
-        <li>컵라면 · 튜브 고추장</li>
-        <li>미니 소주 (종이팩)</li>
-        <li>과자 / 사탕</li>
-        <li>텀블러 (물 담는 용기)</li>
-        <li>앞으로 메는 소형 가방</li>
-        <li>접는 천 가방 (짐 정리용)</li>
-      </ul>
-    </div>
-  </div>
-</section>
 
-<!-- CTA -->
-<section class="cta reveal" id="cta">
-  <div class="wrap">
-    <p class="cta-pre">2026 · Limited Availability</p>
-    <h2 class="cta-h">지금 바로<br><em>예약하세요</em></h2>
-    <p class="cta-sub">자리가 빠르게 마감됩니다 · 서두르세요</p>
-    <div class="cta-btns">
-      <a href="#" class="btn-p">📞 전화 문의</a>
-      <a href="#" class="btn-s">카카오톡 문의</a>
-    </div>
-    <div class="cta-info">
-      <div class="ci"><div class="ci-l">출발일</div><div class="ci-v">2026년 5월 25일</div></div>
-      <div class="ci"><div class="ci-l">귀항일</div><div class="ci-v">2026년 5월 31일</div></div>
-      <div class="ci"><div class="ci-l">선박</div><div class="ci-v">Valiant Lady</div></div>
-      <div class="ci"><div class="ci-l">시작 가격</div><div class="ci-v" style="color:var(--gold)">$4,200~</div></div>
-    </div>
-  </div>
-</section>
 
-<!-- FOOTER -->
-<footer>
-  <div class="ft-logo">VALIANT LADY · 지중해 크루즈 2026</div>
-  <div class="ft-text">Amalfi · Cannes · Ibiza · Barcelona &nbsp;|&nbsp; 6박 7일</div>
-</footer>
+    <!-- Important Notes Section -->
+    <section class="notes-section">
+        <div class="container">
+            <div class="notes-content">
+                <h3><i class="fas fa-exclamation-triangle"></i> 중요 안내사항</h3>
+                <ul class="notes-list">
+                    <li><i class="fas fa-check"></i> 출발 1시간 전까지 승선을 완료해주세요</li>
+                    <li><i class="fas fa-check"></i> 일정 및 기항지는 기상 상황에 따라 변경될 수 있습니다</li>
+                </ul>
+            </div>
+        </div>
+    </section>
 
-<script>
-// Scroll nav
-window.addEventListener('scroll',()=>{
-  document.getElementById('nav').classList.toggle('scrolled',window.scrollY>80);
-});
+    <!-- Before Cruise Section -->
+    <section class="before-cruise-section" id="before-cruise">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title"><i class="fas fa-plane-departure"></i> 여행 전 준비사항</h2>
+                <p class="section-subtitle">완벽한 크루즈 여행을 위한 필수 체크리스트</p>
+            </div>
 
-// Reveal on scroll
-const obs=new IntersectionObserver((entries)=>{
-  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in');});
-},{threshold:.1});
-document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
-</script>
+            <div class="before-cruise-alert">
+                <i class="fas fa-lightbulb"></i>
+                <div>
+                    <strong>크루즈 여행은 **출항 전 준비가 90%**입니다.</strong>
+                    <p>아래 내용을 체크하시면 여행이 10배로 편해집니다.</p>
+                </div>
+            </div>
+
+            <!-- Reservation & Booking -->
+            <div class="prep-section">
+                <div class="prep-header">
+                    <i class="fas fa-clipboard-check"></i>
+                    <h3>예약 확인 & 일정 요약</h3>
+                </div>
+                <ul class="prep-list">
+                    <li><i class="fas fa-check-circle"></i> 크루즈 예약번호 확인 (예약번호, 캐빈번호, 영문 스펠링, 생년월일 확인)</li>
+                    <li><i class="fas fa-check-circle"></i> 선사명 / 선박명 / 출항일 / 기항일</li>
+                    <li><i class="fas fa-check-circle"></i> 출발 항구 & 터미널 주소<br>
+                    <small style="color:#7F8C8D; padding-left:24px;">📍 Terminal Amerigo Vespucci, Prato del Turco, 00053 Civitavecchia, Italy<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;(출항 전 버진 보이지스 앱에서 최신 터미널 정보 재확인 권장)</small></li>
+                    <li><i class="fas fa-check-circle"></i> 객실 타입별 무료사항 확인 (와이파이 & 주류 확인)</li>
+                </ul>
+            </div>
+
+            <!-- Flight Tickets -->
+            <div class="prep-section">
+                <div class="prep-header">
+                    <i class="fas fa-plane"></i>
+                    <h3>항공편 체크</h3>
+                </div>
+                <ul class="prep-list">
+                    <li><i class="fas fa-check-circle"></i> 출국 / 귀국 항공편 시간 확인 (예약번호)</li>
+                    <li><i class="fas fa-check-circle"></i> 공항까지 교통편 예약 | 출발 도착 공항 터미널 확인 (터미널명 or 1터미널, 2터미널)</li>
+                    <li><i class="fas fa-check-circle"></i> 수하물 규정 확인 (무게)</li>
+                    <li><i class="fas fa-check-circle"></i> 사전 좌석 지정</li>
+                    <li><i class="fas fa-check-circle"></i> 항공사 웹 체크인 및 모바일 체크인 준비</li>
+                    <li><i class="fas fa-check-circle"></i> 출항 당일 항공 지연 대비 여유 일정 확보</li>
+                </ul>
+            </div>
+
+            <!-- Embarkation Day -->
+            <div class="prep-section embarkation-highlight">
+                <div class="prep-header">
+                    <i class="fas fa-ship"></i>
+                    <h3>승선 & 체크인 (Embarkation Day)</h3>
+                </div>
+                <div class="embarkation-alert">
+                    <i class="fas fa-exclamation-circle"></i>
+                    <p><strong>승선일은 이동 + 체크인 + 적응의 날입니다.</strong><br>
+                    아래 흐름대로만 따라오시면 어렵지 않습니다.</p>
+                </div>
+
+                <!-- 유튜브 영상 -->
+                <div style="margin: 20px 0; border-radius: 12px; overflow: hidden;">
+                    <iframe width="100%" height="315" src="https://www.youtube.com/embed/_Auk9Q2-vC8" title="크루즈 탑승 영상" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="border-radius: 12px;"></iframe>
+                </div>
+                
+                <div class="embarkation-grid">
+                    <div class="embark-card">
+                        <div class="embark-icon"><i class="fas fa-map-pin"></i></div>
+                        <h4>크루즈 터미널 안내</h4>
+                        <ul>
+                            <li>출항 항구 및 터미널 위치 확인</li>
+                            <li>항구 도착 권장 시간: 출항 <strong>2~3시간 전</strong></li>
+                            <li>공항 또는 호텔 → 터미널 이동 수단 확인</li>
+                            <li>터미널 입장 시 여권 + 예약증 준비 (계속 보여줘야 하니 탑승시까지 들고 있기)</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="embark-card">
+                        <div class="embark-icon"><i class="fas fa-passport"></i></div>
+                        <h4>체크인 절차</h4>
+                        <ul>
+                            <li>대형 수하물은 터미널에서 위탁 후 객실로 전달</li>
+                            <li>터미널 입장 → 예약증 확인</li>
+                            <li>여권 제시 및 신분 확인</li>
+                            <li>출입시 사용할 사진 촬영</li>
+                            <li>체크인 카운터에서 객실 키카드(또는 손목밴드) 수령 또는 문앞에 꽂혀 있을 수 있음</li>
+                            <li>선내 결제 계정 활성화 (신용카드 등록 or 신용카드 연동)</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="embark-card">
+                        <div class="embark-icon"><i class="fas fa-suitcase"></i></div>
+                        <h4>수하물 규정</h4>
+                        <ul>
+                            <li>선내 반입 가방에 <strong>여권·귀중품·약 소지</strong></li>
+                            <li>👉 짐이 늦게 오는 경우도 있으니 바로 필요한 물건은 미리 작은가방에 빼놓기 (충전기, 칫솔압솔 옷, 약 등)</li>
+                            <li>수하물은 객실 문 앞으로 배달예정</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Checklist -->
+            <div class="prep-section">
+                <div class="prep-header">
+                    <i class="fas fa-list-check"></i>
+                    <h3>출국 준비 체크리스트</h3>
+                </div>
+                <div class="checklist-grid">
+                    <div class="checklist-card">
+                        <h4><i class="fas fa-child"></i> 여권 (유효기간 6개월 이상)</h4>
+                        <ul>
+                            <li>항공권 / 크루즈 예약 확인서 / 짐 태그</li>
+                            <li>해외여행자 보험 증서 (꼭 출국전 가입하기!)</li>
+                            <li>신용카드 + 소액 현금 (카드는 비자 또는 마스터 카드 준비 | 현금 유로 (비상금) 10만원 정도는 환전하기!)</li>
+                            <li>개인 상비약 준비 (멀미약 | 소화제 | 인공눈물 | 마스크 등)</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="checklist-card">
+                        <h4><i class="fas fa-luggage-cart"></i> 보안 검사</h4>
+                        <ul>
+                            <li>공항과 유사한 보안 검색 진행</li>
+                            <li>금지 물품 확인</li>
+                            <li>긴 멀티탭 반입 불가</li>
+                            <li>액체, 주류 반입 규정 선사별 상이</li>
+                            <li>와인은 1병 까지 반입 가능</li>
+                            <li>추가 알콜은 크루즈에서 보관 후 마지막에 방으로 돌려줌</li>
+                            <li>미니 소주는 주로 반입됨!</li>
+                            <li>기항지에서 소형 알콜은 반입 되는 경우가 있음</li>
+                            <li>드론 반입 불가</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Apps & Tips -->
+            <div class="prep-section">
+                <div class="prep-header">
+                    <i class="fas fa-mobile-alt"></i>
+                    <h3>필수 앱 설치</h3>
+                </div>
+                <div class="apps-grid">
+                    <div class="app-category">
+                        <h4><i class="fas fa-ship"></i> 체크리스트</h4>
+                        <div class="app-tags">
+                            <span class="app-tag"><i class="fas fa-check"></i> 크루즈 어플 다운받기</span>
+                        </div>
+                    </div>
+                    
+                    <div class="app-category">
+                        <h4><i class="fas fa-map"></i> 지도 & 소통</h4>
+                        <div class="app-tags">
+                            <span class="app-tag"><i class="fab fa-google"></i> Google Maps</span>
+                            <span class="app-tag"><i class="fas fa-comment"></i> ChatGPT</span>
+                            <span class="app-tag"><i class="fab fa-google"></i> Google 번역</span>
+                        </div>
+                    </div>
+                    
+                    <div class="app-category">
+                        <h4><i class="fas fa-taxi"></i> 교통</h4>
+                        <div class="app-tags">
+                            <span class="app-tag"><i class="fas fa-car"></i> Uber</span>
+                            <span class="app-tag"><i class="fas fa-truck"></i> Grab</span>
+                        </div>
+                    </div>
+                    
+                    <div class="app-category">
+                        <h4><i class="fas fa-dollar-sign"></i> 환율</h4>
+                        <div class="app-tags">
+                            <span class="app-tag"><i class="fas fa-exchange-alt"></i> XE (환율 앱 다운받기)</span>
+                            <span class="app-tag"><i class="fab fa-whatsapp"></i> WhatsApp (소통 앱 다운받기)</span>
+                        </div>
+                    </div>
+                    
+                    <div class="app-category">
+                        <h4><i class="fas fa-globe"></i> 여행플랫폼</h4>
+                        <div class="app-tags">
+                            <span class="app-tag"><i class="fas fa-search"></i> KLOOK</span>
+                            <span class="app-tag"><i class="fas fa-map-marked-alt"></i> 마이리얼트립</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Virgin Voyages App Download Section -->
+            <div class="prep-section virgin-app-section">
+                <div class="prep-header virgin-header">
+                    <i class="fab fa-app-store-ios"></i>
+                    <h3>Virgin Voyages <span style="font-size:0.65em; font-weight:400; color:#7F8C8D;">(버진 보이지스)</span> 공식 앱 다운로드</h3>
+                </div>
+                <div class="virgin-app-alert">
+                    <i class="fas fa-mobile-alt"></i>
+                    <p><strong>승선 전 필수!</strong> Virgin Voyages 앱을 미리 다운로드하고 로그인까지 하시고 탑승하셔야 합니다. (탑승해서 로그인 하려고 하면 잘 안되는 경우가 많아요)</p>
+                </div>
+                
+                <!-- Virgin Voyages App Preview Image -->
+                <div class="virgin-app-preview">
+                    <img src="https://www.genspark.ai/api/files/s/PsFtzkc6" alt="Virgin Voyages 앱 - Your Voyage, Your Way">
+                </div>
+            </div>
+
+            <!-- Travel Tips -->
+            <div class="prep-section tips-section">
+                <div class="prep-header">
+                    <i class="fas fa-lightbulb"></i>
+                    <h3>유용한 여행 팁</h3>
+                </div>
+                
+                <!-- Cruise Tips Images -->
+                <div class="tips-images-grid">
+                    <div class="tip-image-card">
+                        <img src="https://www.genspark.ai/api/files/s/fBdd8ksQ" alt="크루즈 선상신문, 방키, 비치타월">
+                        <div class="tip-image-caption">
+                            <p><strong>📰 선상신문 & 방키</strong></p>
+                            <p>매일 객실에 배달되는 선상신문(Daily Program)으로 일정 확인 + 방키(객실 카드)는 항상 소지</p>
+                        </div>
+                    </div>
+                    <div class="tip-image-card">
+                        <img src="https://www.genspark.ai/api/files/s/O5vGhR5S" alt="하선안내, 공항서류, 선상팁 결제">
+                        <div class="tip-image-caption">
+                            <p><strong>🚢 하선안내 & 팁 정산</strong></p>
+                            <p>하선 전 객실에서 짐 태그 확인 + 선상팁은 자동 결제되니 영수증 확인하세요</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tips-grid">
+                    <div class="tip-card">
+                        <div class="tip-icon"><i class="fas fa-utensils"></i></div>
+                        <h4>음료 & 와이파이 패키지</h4>
+                        <p>기본 포함 여부 확인 (ALL 유료) - 방에 있다고 해서 드시면 차지 됩니다. 필요 시 업그레이드 가능 (유료)<br>
+                        음료 패키지 / 선박 크레딧 추가 선택 가능 - 어플에서 추가 결제 해야 저렴함.</p>
+                        와이파이 속도 음성 확인 - 챗봇 걸제해야 저렴한 경우가 많음</p>
+                    </div>
+                    
+                    <div class="tip-card">
+                        <div class="tip-icon"><i class="fas fa-moon"></i></div>
+                        <h4>첫날 식사 가이드</h4>
+                        <p>점심 또는 저녁은 뷔페 또는 메인 다이닝 이용<br>
+                        첫날은 예약 없이 이용 가능한 경우 많음<br>
+                        레스토랑 운영 시간은 크루즈 앱 참고<br>
+                        본인 정찬 레스토랑 위치는 객실 키 참고 (객실 번호별 위치와 시간 상이)<br><br>
+                        🍽️ <strong>식당 예약 오픈 시기 (모든 식당 동일)</strong><br>
+                        &nbsp;&nbsp;• Essential 요금제: 출항 <strong>45일 전</strong>부터 오픈<br>
+                        &nbsp;&nbsp;• Premium 요금제: 출항 <strong>60일 전</strong>부터 오픈<br>
+                        &nbsp;&nbsp;• RockStar 스위트: 출항 <strong>120일 전</strong>부터 오픈<br><br>
+                        📌 6~8박 기준 식당당 <strong>최대 2회</strong>까지 예약 가능 (모든 식당 동일)<br>
+                        🥢 <strong>Gunbae (건배)</strong>, <strong>Pink Agave</strong>는 좌석이 적어 특히 빨리 마감 → 최우선 예약 권장<br>
+                        ✅ 예약 슬롯의 약 70%는 승선 당일 오픈 → 승선 즉시 앱에서 추가 예약 가능<br><br>
+                        🎭 <strong>공연 예약</strong><br>
+                        &nbsp;&nbsp;• Red Room, The Manor 메인 공연은 예약 불필요 (선착순 입장)<br>
+                        &nbsp;&nbsp;• 웰니스·요리 클래스 등 일부 이벤트는 승선 후 앱에서 예약 가능<br>
+                        &nbsp;&nbsp;• 인기 공연은 20~30분 전 일찍 도착 권장</p>
+                    </div>
+                    
+                    <div class="tip-card">
+                        <div class="tip-icon"><i class="fas fa-glass-cheers"></i></div>
+                        <h4>보안 검사</h4>
+                        <p>공항과 유사한 보안 검색 진행<br>
+                        금지 물품 확인<br>
+                        긴 멀티탭 반입 불가<br>
+                        액체, 주류 반입 규정 선사별 상이<br>
+                        와인, 양주 등 대형 알콜은 크루즈에서 받아주고 마지막에 지원해준 경우가 많음<br>
+                        미니 소주는 주로 반입됨!<br>
+                        기항지에서 백주나 소형 알콜은 반입 되는 경우가 있음<br>
+                        드론 반입 불가</p>
+                    </div>
+                    
+                    <div class="tip-card">
+                        <div class="tip-icon"><i class="fas fa-tshirt"></i></div>
+                        <h4>객실 배정 & 카드 사용</h4>
+                        <p>객실 카드는 신분증 역할을 하므로 절대 룸메이트와 바꿔서 가지고 다니시면 안됩니다.<br>
+                        예) 기항지 출입시 바꿔 들고 가시다가 못 나가시는 경우가 있습니다.<br>
+                        **분실 시 안내데스크에서 재발급 받으셔야 합니다.</p>
+                        <ul>
+                            <li>객실은 보통 오후 1시~2시 부터 입실 가능</li>
+                            <li>객실 카드 기능 (체크인 후 방문 앞에 꽂혀 있음)</li>
+                            <li>식사·출입</li>
+                            <li>식사·음료 결제 (신용카드 연동)</li>
+                            <li>하선/재승선 확인 (신분증 역할)</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="tip-card">
+                        <div class="tip-icon"><i class="fas fa-alarm-clock"></i></div>
+                        <h4>선내 첫날 타임라인</h4>
+                        <p>승선 후 선내 식사 자유 이용 (뷔페 식사 가능 | 수영장 이용 가능)<br>
+                        안전 훈련 시간 확인 (크루즈 예약증이나 객실 키에 적힌 알파벳 확인 후 안전 공간으로 가서 카드 스캔하시면 됩니다)</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Packing Guide -->
+
+            <!-- Dress Code -->
+            <div class="prep-section dresscode-section">
+                <div class="prep-header">
+                    <i class="fas fa-user-tie"></i>
+                    <h3>복장 & 드레스 코드</h3>
+                </div>
+                <div class="dresscode-grid">
+                    <div class="dress-card casual">
+                        <div class="dress-icon"><i class="fas fa-tshirt"></i></div>
+                        <h4>크루즈 드레스 코드</h4>
+                        <p>포멀 나잇 - 드레스 또는 정장(남성) + 나비넥타이 준비</p>
+                        <p>기항지 날씨 체크 후 복장 준비</p>
+                    </div>
+                    
+                </div>
+            </div>
+
+            <!-- 준비물 아코디언 -->
+            <div class="prep-section">
+                <div class="prep-header">
+                    <i class="fas fa-suitcase-rolling"></i>
+                    <h3>준비물</h3>
+                </div>
+                <p style="color:#7F8C8D; margin-bottom:20px;">쾌적한 크루즈 여행을 위해 미리 챙겨주세요</p>
+
+                <div style="display:grid; grid-template-columns:1fr 1fr; gap:0; border:1px solid #e0e0e0; border-radius:8px; overflow:hidden;">
+                    <!-- 왼쪽 컬럼 -->
+                    <div style="border-right:1px solid #e0e0e0;">
+                        <div class="accordion-item">
+                            <button class="accordion-btn" onclick="toggleAccordion(this)"><span>서류 / 결제</span><i class="fas fa-chevron-down"></i></button>
+                            <div class="accordion-content" style="display:none;"><ul>
+                                <li>여권 (6개월 이상 잔여기간)</li>
+                                <li>여권 분실 시 크루즈 탑승 불가 (긴급여권 X)</li>
+                                <li>항공권 / 크루즈 티켓 / 집택 / 호텔 바우처 / 여행자보험 등은 여행사 준비</li>
+                                <li>신용카드는 본인 또는 동반자 명의 권장</li>
+                                <li>해외 사용 신용카드 (비자 / 마스터 / 다이너스 / 아멕스 등)</li>
+                                <li>카드가 없으면 현금 보증금(약 300~500달러 또는 유로)으로 대체 가능</li>
+                            </ul></div>
+                        </div>
+                        <div class="accordion-item">
+                            <button class="accordion-btn" onclick="toggleAccordion(this)"><span>환전</span><i class="fas fa-chevron-down"></i></button>
+                            <div class="accordion-content" style="display:none;"><ul>
+                                <li>현지 화폐</li>
+                                <li>(카지노 이용 시) 미국 달러</li>
+                                <li>한국 원화는 사용 불가</li>
+                            </ul></div>
+                        </div>
+                        <div class="accordion-item">
+                            <button class="accordion-btn" onclick="toggleAccordion(this)"><span>가방 / 위생</span><i class="fas fa-chevron-down"></i></button>
+                            <div class="accordion-content" style="display:none;"><ul>
+                                <li>앞으로 메는 소형 가방 (소매치기 예방 목적 권장)</li>
+                                <li>치약 / 칫솔</li>
+                                <li>위생팩</li>
+                                <li>텀블러 (물 담는 용기)</li>
+                                <li>선사 제공: 샴푸 / 컨디셔너 / 바디워시 / 수건</li>
+                            </ul></div>
+                        </div>
+                        <div class="accordion-item">
+                            <button class="accordion-btn" onclick="toggleAccordion(this)"><span>수화물</span><i class="fas fa-chevron-down"></i></button>
+                            <div class="accordion-content" style="display:none;"><ul>
+                                <li>권장 사항: 일반적으로 1인당 1개의 위탁 수하물을 권장합니다</li>
+                                <li>무게: 개당 약 23kg(50lbs)을 초과하지 않는 것이 좋습니다 (승무원이 직접 운반하기 때문에 안전상의 이유로 제한)</li>
+                                <li>크기: 객실 내 침대 밑이나 옷장에 보관해야 하므로 너무 큰 하드케이스보다는 표준 사이즈가 유리합니다</li>
+                            </ul></div>
+                        </div>
+                        <div class="accordion-item" style="border-bottom:none;">
+                            <button class="accordion-btn" onclick="toggleAccordion(this)"><span>기타 / 주의</span><i class="fas fa-chevron-down"></i></button>
+                            <div class="accordion-content" style="display:none;"><ul>
+                                <li>접는 천가방 또는 장바구니 (마지막 날 짐 꾸리기 용도로 유용)</li>
+                                <li>(유료) 크루즈 인터넷</li>
+                                <li>(유료) 주류 패키지</li>
+                                <li>전기 110V·220V</li>
+                                <li>드라이 / 커피포트는 있으나, 다른 전기제품 반입 불가</li>
+                            </ul></div>
+                        </div>
+                    </div>
+                    <!-- 오른쪽 컬럼 -->
+                    <div>
+                        <div class="accordion-item">
+                            <button class="accordion-btn" onclick="toggleAccordion(this)"><span>의상 / 개인용품</span><i class="fas fa-chevron-down"></i></button>
+                            <div class="accordion-content" style="display:none;"><ul>
+                                <li>남: 셔츠 정장·넥타이 또는 턱시도</li>
+                                <li>여: 원피스 / 블라우스 (한복 유용)</li>
+                                <li>신발 (구두 / 운동화 / 슬리퍼 / 등)</li>
+                                <li>썬크림, 모자, 화장품, 빗, 면도기</li>
+                                <li>선사 정책에 따라 갈라 디너가 있을 수 있음</li>
+                                <li>선내 18~20도 온도 유지</li>
+                                <li>수영장 / 피트니스 및 도보 일정 대비</li>
+                                <li>등산복 / 등산화는 자제 권장</li>
+                                <li>우천 대비 우산 또는 우비</li>
+                            </ul></div>
+                        </div>
+                        <div class="accordion-item">
+                            <button class="accordion-btn" onclick="toggleAccordion(this)"><span>음식 / 간식</span><i class="fas fa-chevron-down"></i></button>
+                            <div class="accordion-content" style="display:none;"><ul>
+                                <li>사탕, 과자 등 간식</li>
+                                <li>(취향) 튜브 고추장</li>
+                                <li>(취향) 컵라면</li>
+                                <li>(취향) 김치 (통조림 / 볶음김치)</li>
+                                <li>(취향) 소주 (종이팩)</li>
+                                <li>개인 취향에 따라 준비</li>
+                                <li>선내 반입 규정은 선사 기준 확인 필요</li>
+                            </ul></div>
+                        </div>
+                        <div class="accordion-item">
+                            <button class="accordion-btn" onclick="toggleAccordion(this)"><span>상비약</span><i class="fas fa-chevron-down"></i></button>
+                            <div class="accordion-content" style="display:none;"><ul>
+                                <li>소화제, 멀미약, 두통약, 감기약, 해열제, 상처연고, 밴드</li>
+                                <li>개인 복용약은 캐리어 / 휴대품에 분산해 넉넉히 준비 권장</li>
+                            </ul></div>
+                        </div>
+                        <div class="accordion-item">
+                            <button class="accordion-btn" onclick="toggleAccordion(this)"><span>통신</span><i class="fas fa-chevron-down"></i></button>
+                            <div class="accordion-content" style="display:none;"><ul>
+                                <li>해외 로밍 신청</li>
+                                <li>출국 전 데이터 통신 차단</li>
+                                <li>통신사 연락처: SK 02-6343-9000 / KT 02-2190-0901 / LGT 02-3416-7010</li>
+                                <li>선내 와이파이 별도 신청 (룸당 1인 권장)</li>
+                            </ul></div>
+                        </div>
+                        <div class="accordion-item" style="border-bottom:none;">
+                            <button class="accordion-btn" onclick="toggleAccordion(this)"><span>반입금지</span><i class="fas fa-chevron-down"></i></button>
+                            <div class="accordion-content" style="display:none;"><ul>
+                                <li>술, 진공포장되지 않은 음식물, 폭발물 / 독성물질 / 인화성 물질, 도검류, 총기류, 공구류 등</li>
+                                <li>주류 반입은 엄격히 금지 (1병까지는 가능)</li>
+                            </ul></div>
+                        </div>
+                    </div>
+                </div>
+
+                <style>
+                .accordion-item { border-bottom: 1px solid #e0e0e0; }
+                .accordion-btn { width:100%; display:flex; justify-content:space-between; align-items:center; padding:16px 20px; background:white; border:none; cursor:pointer; font-size:1rem; font-weight:600; color:#2C3E50; text-align:left; transition:background 0.2s; }
+                .accordion-btn:hover { background:#f8f9fa; }
+                .accordion-btn.active { color:#3498DB; border:2px solid #3498DB; }
+                .accordion-btn i { transition:transform 0.3s; font-size:0.85rem; color:#7F8C8D; }
+                .accordion-btn.active i { transform:rotate(180deg); color:#3498DB; }
+                .accordion-content { padding:0 20px 16px; background:white; }
+                .accordion-content ul { list-style:none; padding:0; margin:0; }
+                .accordion-content ul li { padding:6px 0 6px 18px; position:relative; color:#444; font-size:0.95rem; line-height:1.6; border-bottom:1px solid #f0f0f0; }
+                .accordion-content ul li:last-child { border-bottom:none; }
+                .accordion-content ul li::before { content:'•'; position:absolute; left:0; color:#3498DB; font-size:1.2rem; line-height:1; }
+                </style>
+                <script>
+                function toggleAccordion(btn) {
+                    const content = btn.nextElementSibling;
+                    const isOpen = content.style.display === 'block';
+                    content.style.display = isOpen ? 'none' : 'block';
+                    btn.classList.toggle('active', !isOpen);
+                }
+                </script>
+            </div>
+
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Valiant Lady Cruise</h4>
+                    <p>지중해의 보석 같은 도시들을 탐험하는<br>럭셔리 크루즈 여행</p>
+                </div>
+                <div class="footer-section">
+                    <h4>빠른 링크</h4>
+                    <ul>
+                        <li><a href="#route">여행 루트</a></li>
+                        <li><a href="#itinerary">상세 일정</a></li>
+                        <li><a href="#before-cruise">여행 전 준비</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Valiant Lady Cruise. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating Action Button -->
+    <a href="#booking" class="fab-button" title="예약하기">
+        <i class="fas fa-anchor"></i>
+    </a>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <script src="main.js"></script>
 </body>
 </html>
